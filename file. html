@@ -4,21 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sagesse AI Friend Bot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4a90e2;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 2px solid #4a90e2;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        button {
+            background-color: #4a90e2;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #007bff;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #4a90e2;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap; /* Allows for wrapping */
+        }
+    </style>
 </head>
 <body>
-    <h1>Sagesse AI Friend Bot</h1>
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username">
-        <button onclick="createAccount()">Create Account</button>
+    <div class="container">
+        <h1>Sagesse AI Friend Bot</h1>
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username">
+            <button onclick="createAccount()">Create Account</button>
+        </div>
+        <div>
+            <label for="message">Message to Sagesse Bot:</label>
+            <input type="text" id="message" name="message" placeholder="Type your message here">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+        <h2>Response:</h2>
+        <pre id="response"></pre>
     </div>
-    <div>
-        <label for="message">Message to Sagesse Bot:</label>
-        <input type="text" id="message" name="message">
-        <button onclick="sendMessage()">Send</button>
-    </div>
-    <h2>Response:</h2>
-    <pre id="response"></pre>
 
     <script>
         async function createAccount() {
