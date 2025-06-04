@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sagesse AI Friend Bot</title>
+</head>
+<body>
+    <h1>Sagesse AI Friend Bot</h1>
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <button onclick="createAccount()">Create Account</button>
+    </div>
+    <div>
+        <label for="message">Message to Sagesse Bot:</label>
+        <input type="text" id="message" name="message">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    <h2>Response:</h2>
+    <pre id="response"></pre>
+
+    <script>
+        async function createAccount() {
+            const username = document.getElementById('username').value;
+            const response = await fetch('/create_account', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username })
+            });
+            const data = await response.json();
+            document.getElementById('response').textContent = data.message;
+        }
+
+        async function sendMessage() {
+            const message = document.getElementById('message').value;
+            const response = await fetch('/sagesse_bot', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message })
+            });
+            const data = await response.json();
+            document.getElementById('response').textContent = data.response;
+        }
+    </script>
+</body>
+</html>
